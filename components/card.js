@@ -3,10 +3,13 @@ import { useState } from 'react';
 import styles from "../Styles/styles"
 
 
-export const Card = ({ id, picture,callback }) => {
+export const Card = ({ id, picture,disabled,callback}) => {
     const [text, setText] = useState("?");
+    const [disable, setDisable] = useState(disabled);
+
     const flipCard = (pic) => {
         setText(pic);
+        //setDisable(true);
     }
 
 
@@ -15,7 +18,8 @@ export const Card = ({ id, picture,callback }) => {
         <Pressable
             style={styles.card}
             onPress={() => { callback(picture) }}
-            onPressIn={() => {flipCard(picture) } }
+            onPressIn={() => { flipCard(picture) }}
+            disabled={disable }
         ><Text style={styles.text}>{text}</Text>
         </Pressable>
     );
