@@ -1,17 +1,29 @@
 import { Pressable, Text } from 'react-native'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from "../Styles/styles"
 
 
 export const Card = ({ id, picture,disabled,callback}) => {
     const [text, setText] = useState("?");
-    const [disable, setDisable] = useState(disabled);
+    const [same, setSame] = useState(disabled)
+    const [disable, setDisable] = useState(false);
 
     const flipCard = (pic) => {
-        setText(pic);
-        //setDisable(true);
+        if (text == pic) {
+            setText("?");
+        } else {
+            setText(pic);
+           setDisable(true);
+        }
+        
     }
-
+    useEffect(() => {
+        
+        if (same) {
+            setDisable(true);
+        }
+       
+    },[text])
 
 
     return (

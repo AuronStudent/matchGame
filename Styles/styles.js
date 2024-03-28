@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     halfScreen: {
-        flex: 0.5,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
